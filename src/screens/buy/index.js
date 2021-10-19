@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import NavigationHeader from '../../components/HeaderNavigation';
 import Input from '../../components/Input'
@@ -13,7 +13,7 @@ const Buy = ({ route }) => {
   const { number } = route.params
 
   const buy = () => {
-    navigation.navigate('Home');
+    navigation.goBack();
   };
 
   return (

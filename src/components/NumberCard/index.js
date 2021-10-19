@@ -5,18 +5,19 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const NumberCard = ({ number }) => {
   const navigation = useNavigation();
+
   const [isBuy, setIsBuy] = useState(false);
 
-  const isToBuy = () => {
+  const isToBuy = (number) => {
     navigation.navigate('Buy', {
-      number: number
+      number: number,
     });
-    setIsBuy(true)
-  }
+   setIsBuy(true)
+  };
 
   if (isBuy == false) {
     return (
-      <TouchableOpacity style={styles.container} onPress={isToBuy}>
+      <TouchableOpacity style={styles.container} onPress={() => isToBuy(number)}>
         <View style={styles.cardDesing} />
         <Text style={styles.title}>{number}</Text>
         <Icon name="angle-right" style={styles.icon} />

@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Picker } from '@react-native-picker/picker'
 import { v4 as uuidv4 } from 'uuid';
+import { saveRaffle } from '../../libs/Storage';
  
 import NavigationHeader from '../../components/HeaderNavigation';
 import Input from '../../components/Input';
@@ -15,23 +16,21 @@ const addRifas = () => {
   const [award, setAward] = useState('');
   const [number, setNumber] = useState(0);
 
+
   const id = uuidv4();
 
+  //   if (title == '' || title == undefined) {
+  //     Alert.alert('Please, check the title!')
+  //   } else if (award == '' || award == undefined) {
+  //     Alert.alert('Please, check the award')
+  //   } else if (number == 0 || number == undefined) {
+  //     Alert.alert('Please, check the number of tickets')
+  //   } 
+
+
   const createRaffle = () => {
-    if (title == '' || title == undefined) {
-      Alert.alert('Please, check the title!')
-    } else if (award == '' || award == undefined) {
-      Alert.alert('Please, check the award')
-    } else if (number == 0 || number == undefined) {
-      Alert.alert('Please, check the number of tickets')
-    } else {
-      navigation.navigate('Home', {
-        id: id,
-        title: title,
-        award: award,
-        number: number
-      });
-    };
+    navigation.navigate('Home');
+    saveRaffle({ id, title, award, number});
   };
 
   return (
