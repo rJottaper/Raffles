@@ -8,8 +8,9 @@ import Input from '../../components/Input'
 
 const Buy = ({ route }) => {
   const navigation = useNavigation();
+
   const [name, setName] = useState('');
-  
+
   const { number } = route.params
 
   const buy = () => {

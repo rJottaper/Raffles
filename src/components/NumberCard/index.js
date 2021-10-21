@@ -1,23 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const NumberCard = ({ number }) => {
-  const navigation = useNavigation();
-
-  const [isBuy, setIsBuy] = useState(false);
-
-  const isToBuy = (number) => {
-    navigation.navigate('Buy', {
-      number: number,
-    });
-   setIsBuy(true)
-  };
-
+const NumberCard = ({ number, onPress, isBuy }) => {
   if (isBuy == false) {
     return (
-      <TouchableOpacity style={styles.container} onPress={() => isToBuy(number)}>
+      <TouchableOpacity style={styles.container} onPress={onPress}>
         <View style={styles.cardDesing} />
         <Text style={styles.title}>{number}</Text>
         <Icon name="angle-right" style={styles.icon} />
