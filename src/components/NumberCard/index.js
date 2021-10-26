@@ -2,23 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const NumberCard = ({ number, onPress, isBuy }) => {
+const NumberCard = ({ number, onPress }) => {
+  const [isBuy, setIsBuy] = useState(false);
+
+  const buy = () => {
+    setIsBuy(true)
+  };
+
   if (isBuy == false) {
     return (
-      <TouchableOpacity style={styles.container} onPress={onPress}>
+      <TouchableOpacity style={styles.container} onPress={onPress} onPressOut={() => buy(number)}>
         <View style={styles.cardDesing} />
         <Text style={styles.title}>{number}</Text>
         <Icon name="angle-right" style={styles.icon} />
       </TouchableOpacity>
     );
   } else {
-    return (
-      <View style={styles.isBuy}>
-        <View style={styles.cardDesing} />
-        <Text style={styles.title}>{number}</Text>
-        <Icon name="angle-right" style={styles.icon} />
-      </View>
-    );
+      return (
+        <View style={styles.isBuy}>
+          <View style={styles.cardDesing} />
+          <Text style={styles.title}>{number}</Text>
+          <Icon name="angle-right" style={styles.icon} />
+        </View>
+      );
   }
 };
 

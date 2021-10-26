@@ -23,7 +23,7 @@ const Home = ({ route }) => {
 
   useEffect(() => {
     newRaffle();
-  }, []);
+  }, [rifas]);
 
   // Use to clear Async Storage 
   // AsyncStorage.clear();

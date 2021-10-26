@@ -6,19 +6,19 @@ import NavigationHeader from '../../components/HeaderNavigation';
 import NumberCard from '../../components/NumberCard';
 
 const raffleBuy = ({ route }) => {
+  const navigation = useNavigation();
+
   const { title, number } = route.params
+
   const [numbers, setNumbers] = useState([]);
+  const [toSort, setToSort] = useState([]);
 
   useEffect(() => {
     let range = [];
     for (let i = 0; i < number; i++)
     range[i] = i + 1;
     setNumbers(range)
-  }, [])
-
-  const navigation = useNavigation();
-  const [isBuy, setIsBuy] = useState(false);
-  const [toSort, setToSort] = useState([]);
+  }, []);
 
   const toBuy = number => {
     navigation.navigate('Buy', {
@@ -29,9 +29,6 @@ const raffleBuy = ({ route }) => {
 
   console.log(toSort);
 
-  // const test = numbers.find(item => item == id)
-    
-
   return (
     <SafeAreaView style={styles.container}>
       <NavigationHeader title={title} />
@@ -40,7 +37,7 @@ const raffleBuy = ({ route }) => {
         columnWrapperStyle={{ justifyContent: 'space-around' }}
         data={numbers}
         keyExtractor={item => item}
-        renderItem={({ item }) => <NumberCard number={item} isBuy={isBuy} onPress={() => toBuy(item)}  /> }
+        renderItem={({ item }) => <NumberCard number={item} onPress={() => toBuy(item)} />}
         numColumns={2}
       />
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Sort', { toSort, title: title })}>

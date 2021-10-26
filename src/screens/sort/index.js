@@ -25,7 +25,6 @@ const Sort = ({ route }) => {
     </View>
     <SafeAreaView style={styles.container}> 
       <Text style={styles.title}>{title}</Text>
-      <Text style={styles.sort}>The Number Sort</Text>
       <Text style={styles.number}>Congratulations: {winner}</Text>
       <TouchableOpacity style={styles.button} onPress={() => draw()}>
         <Text style={styles.buttonText}>SORT</Text>
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     borderBottomWidth: 0.2,
-    width: '20%',
+    width: '60%',
     marginTop: 10,
   },
   number: {

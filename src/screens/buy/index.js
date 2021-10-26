@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { SafeAreaView, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -14,8 +14,13 @@ const Buy = ({ route }) => {
   const { number } = route.params
 
   const buy = () => {
-    navigation.goBack();
+    if (name == '' || name == undefined) {
+      Alert.alert('Please, take a name!')
+    } else {
+      navigation.goBack({ name: name });
+    };
   };
+
 
   return (
     <SafeAreaView style={styles.container}>
